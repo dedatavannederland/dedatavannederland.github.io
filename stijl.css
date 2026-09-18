@@ -61,7 +61,7 @@ body {
 /* Zorgt dat de hoofdstukken niet achter de bovenbalk verdwijnen */
 .sectie {
     margin-bottom: 400px;
-    scroll-margin-top: 100px; 
+    scroll-margin-top: 200px; 
 }
 
 /* Zorgt dat ook de paragrafen mooi in beeld springen */
@@ -69,5 +69,5 @@ body {
     margin-top: 24px;
     padding-left: 10px;
     border-left: 2px solid #eee;
-    scroll-margin-top: 110px; 
+    scroll-margin-top: 210px; 
 }
