@@ -3,29 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijn Pagina met Inhoudsopgave</title>
+    <title>Pagina met Zijbalk</title>
+    <style>
+        /* Basisstijl voor de hele pagina */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* De container die de kolommen naast elkaar zet */
+        .hoofd-container {
+            display: flex;
+            gap: 40px; /* Ruimte tussen de linker- en rechterkolom */
+            align-items: flex-start;
+        }
+
+        /* Linkerkolom: De inhoudsopgave */
+        .zijbalk {
+            flex: 0 0 200px; /* Vaste breedte van 200px voor de inhoudsopgave */
+            position: sticky; /* Zorgt dat de inhoudsopgave blijft staan tijdens het scrollen */
+            top: 20px;
+        }
+
+        .inhoudsopgave {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .inhoudsopgave li {
+            margin-bottom: 12px;
+        }
+
+        /* Rechterkolom: De inhoud van de hoofdstukken */
+        .inhoud {
+            flex: 1; /* Neemt de rest van de beschikbare ruimte in */
+        }
+
+        /* Extra witruimte onder de hoofdstukken om het scrollen te demonstreren */
+        .sectie {
+            margin-bottom: 300px; 
+        }
+    </style>
 </head>
 <body>
 
     <h1>Mijn Website</h1>
-    
-    <h2>Inhoudsopgave</h2>
-    <ul>
-        <li><a href="#hoofdstuk1">Naar Hoofdstuk 1</a></li>
-        <li><a href="#hoofdstuk2">Naar Hoofdstuk 2</a></li>
-        <li><a href="#hoofdstuk3">Naar Hoofdstuk 3</a></li>
-    </ul>
-
     <hr>
 
-    <h2 id="hoofdstuk1">Hoofdstuk 1</h2>
-    <p>Dit is de tekst van hoofdstuk 1. Klik op de links hierboven om snel naar een ander deel te springen.</p>
+    <!-- De container die alles verdeelt in kolommen -->
+    <div class="hoofd-container">
 
-    <h2 id="hoofdstuk2">Hoofdstuk 2</h2>
-    <p>Dit is de tekst van hoofdstuk 2. Interne links gebruiken een hekje (#) gevolgd door de ID van het element.</p>
+        <!-- Linkerkolom -->
+        <aside class="zijbalk">
+            <h2>Inhoud</h2>
+            <ul class="inhoudsopgave">
+                <li><a href="#hoofdstuk1">Hoofdstuk 1</a></li>
+                <li><a href="#hoofdstuk2">Hoofdstuk 2</a></li>
+                <li><a href="#hoofdstuk3">Hoofdstuk 3</a></li>
+            </ul>
+        </</aside>
 
-    <h2 id="hoofdstuk3">Hoofdstuk 3</h2>
-    <p>Dit is de tekst van het laatste hoofdstuk.</p>
+        <!-- Rechterkolom -->
+        <main class="inhoud">
+            <section id="hoofdstuk1" class="sectie">
+                <h2>Hoofdstuk 1</h2>
+                <p>Dit is de tekst van hoofdstuk 1. De inhoudsopgave staat nu netjes in een aparte kolom aan de linkerkant.</p>
+            </section>
+
+            <section id="hoofdstuk2" class="sectie">
+                <h2>Hoofdstuk 2</h2>
+                <p>Dit is de tekst van hoofdstuk 2. Dankzij <code>position: sticky</code> in de CSS blijft de inhoudsopgave links in beeld staan als je naar beneden scrollt.</p>
+            </section>
+
+            <section id="hoofdstuk3" class="sectie">
+                <h2>Hoofdstuk 3</h2>
+                <p>Dit is de tekst van het laatste hoofdstuk.</p>
+            </section>
+        </main>
+
+    </div>
 
 </body>
 </html>
