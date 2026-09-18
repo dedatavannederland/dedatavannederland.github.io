@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina met Zijbalk</title>
-   <link rel="stylesheet" href="stijl.css">
+    <title>Pagina met Plakkende Titel en Zijbalk</title>
+    <!-- Deze regel koppelt het HTML-bestand aan je CSS-bestand -->
+    <link rel="stylesheet" href="stijl.css">
 </head>
 <body>
 
-    <h1>Mijn Website</h1>
-    <hr>
+    <!-- Deze balk blijft altijd bovenin staan -->
+    <header class="bovenbalk">
+        <h1>Mijn Website</h1>
+        <hr>
+    </header>
 
-    <!-- De container die alles verdeelt in kolommen -->
+    <!-- De kolommenstructuur -->
     <div class="hoofd-container">
 
         <!-- Linkerkolom -->
@@ -28,17 +32,17 @@
         <main class="inhoud">
             <section id="hoofdstuk1" class="sectie">
                 <h2>Hoofdstuk 1</h2>
-                <p>Dit is de tekst van hoofdstuk 1. De inhoudsopgave staat nu netjes in een aparte kolom aan de linkerkant.</p>
+                <p>Dit is de tekst van hoofdstuk 1. Als je nu naar beneden scrollt, zul je zien dat de titel "Mijn Website" bovenaan vast blijft staan.</p>
             </section>
 
             <section id="hoofdstuk2" class="sectie">
                 <h2>Hoofdstuk 2</h2>
-                <p>Dit is de tekst van hoofdstuk 2. Dankzij <code>position: sticky</code> in de CSS blijft de inhoudsopgave links in beeld staan als je naar beneden scrollt.</p>
+                <p>Dit is de tekst van hoofdstuk 2. De inhoudsopgave links scrolt in het begin gezellig mee, maar blijft daarna ook stilstaan onder de hoofdtitel.</p>
             </section>
 
             <section id="hoofdstuk3" class="sectie">
                 <h2>Hoofdstuk 3</h2>
-                <p>Dit is de tekst van het laatste hoofdstuk.</p>
+                <p>Dit is de tekst van het laatste hoofdstuk. Alles werkt nu onafhankelijk van elkaar tijdens het scrollen.</p>
             </section>
         </main>
 
