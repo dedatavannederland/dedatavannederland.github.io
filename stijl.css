@@ -44,6 +44,13 @@ body {
     margin-bottom: 12px;
 }
 
+/* Zorgt dat paragraaf-links in de inhoudsopgave netjes inspringen */
+.inhoudsopgave .sublink {
+    padding-left: 15px;
+    font-size: 0.9em; /* Maakt de tekst net iets compacter */
+    margin-bottom: 8px;
+}
+
 /* Rechterkolom (Hoofdtekst) */
 .inhoud {
     flex: 1;
@@ -51,4 +58,11 @@ body {
 
 .sectie {
     margin-bottom: 400px;
+}
+
+/* Extra witruimte boven een paragraaf-kopje */
+.subsectie {
+    margin-top: 24px;
+    padding-left: 10px;
+    border-left: 2px solid #eee; /* Optioneel: een subtiel lijntje links van de paragraaf */
 }
