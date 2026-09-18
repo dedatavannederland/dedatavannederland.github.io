@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0 20px 20px 20px;
+    /* Zorgt ervoor dat het scrollen vloeiend verloopt in plaats van een harde sprong */
+    scroll-behavior: smooth; 
 }
 
 /* Zorgt dat de titel bovenaan blijft plakken bij het scrollen */
@@ -47,7 +49,7 @@ body {
 /* Zorgt dat paragraaf-links in de inhoudsopgave netjes inspringen */
 .inhoudsopgave .sublink {
     padding-left: 15px;
-    font-size: 0.9em; /* Maakt de tekst net iets compacter */
+    font-size: 0.9em;
     margin-bottom: 8px;
 }
 
@@ -56,13 +58,16 @@ body {
     flex: 1;
 }
 
+/* HOOFDAANPASSING: Zorgt dat de hoofdstukken niet achter de bovenbalk verdwijnen */
 .sectie {
     margin-bottom: 400px;
+    scroll-margin-top: 100px; /* Houdt 100px ruimte vrij aan de bovenkant bij het springen */
 }
 
-/* Extra witruimte boven een paragraaf-kopje */
+/* HOOFDAANPASSING: Zorgt dat ook de paragrafen mooi in beeld springen */
 .subsectie {
     margin-top: 24px;
     padding-left: 10px;
-    border-left: 2px solid #eee; /* Optioneel: een subtiel lijntje links van de paragraaf */
+    border-left: 2px solid #eee;
+    scroll-margin-top: 110px; /* Net iets meer ruimte voor de subkopjes */
 }
