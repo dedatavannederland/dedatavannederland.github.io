@@ -1,19 +1,37 @@
+/* Basisstijl voor de pagina */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
 }
 
+/* Zorgt dat de titel bovenaan blijft plakken bij het scrollen */
+.bovenbalk {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    z-index: 100;
+    margin-bottom: 20px;
+}
+
+.bovenbalk h1 {
+    margin: 0 0 10px 0;
+}
+
+/* De container die de kolommen daaronder opsplitst */
 .hoofd-container {
     display: flex;
-    gap: 40px;
+    gap: 40px; 
     align-items: flex-start;
 }
 
+/* Linkerkolom (Inhoudsopgave) */
 .zijbalk {
     flex: 0 0 200px;
-    position: sticky;
-    top: 20px;
+    position: sticky; 
+    top: 90px;
 }
 
 .inhoudsopgave {
@@ -26,10 +44,11 @@ body {
     margin-bottom: 12px;
 }
 
+/* Rechterkolom (Hoofdtekst) */
 .inhoud {
     flex: 1;
 }
 
 .sectie {
-    margin-bottom: 300px; 
+    margin-bottom: 400px;
 }
