@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina met Plakkende Titel en Zijbalk</title>
-    <!-- Deze regel koppelt het HTML-bestand aan je CSS-bestand -->
+    <title>Pagina met Paragrafen en Zijbalk</title>
     <link rel="stylesheet" href="stijl.css">
 </head>
 <body>
@@ -23,26 +22,54 @@
             <h2>Inhoud</h2>
             <ul class="inhoudsopgave">
                 <li><a href="#hoofdstuk1">Hoofdstuk 1</a></li>
+                <!-- Sublinks onder Hoofdstuk 1 -->
+                <li class="sublink"><a href="#paragraaf1-1">Paragraaf 1.1</a></li>
+                <li class="sublink"><a href="#paragraaf1-2">Paragraaf 1.2</a></li>
+                
                 <li><a href="#hoofdstuk2">Hoofdstuk 2</a></li>
+                <!-- Sublink onder Hoofdstuk 2 -->
+                <li class="sublink"><a href="#paragraaf2-1">Paragraaf 2.1</a></li>
+                
                 <li><a href="#hoofdstuk3">Hoofdstuk 3</a></li>
             </ul>
         </aside>
 
         <!-- Rechterkolom -->
         <main class="inhoud">
+            <!-- Hoofdstuk 1 -->
             <section id="hoofdstuk1" class="sectie">
                 <h2>Hoofdstuk 1</h2>
-                <p>Dit is de tekst van hoofdstuk 1. Als je nu naar beneden scrollt, zul je zien dat de titel "Mijn Website" bovenaan vast blijft staan.</p>
+                <p>Dit is de hoofdtekst van hoofdstuk 1. Hieronder vind je de specifieke sub-paragrafen.</p>
+                
+                <!-- Paragraaf 1.1 -->
+                <div id="paragraaf1-1" class="subsectie">
+                    <h3>Paragraaf 1.1</h3>
+                    <p>Dit is de inhoud van de eerste paragraaf onder hoofdstuk 1.</p>
+                </div>
+
+                <!-- Paragraaf 1.2 -->
+                <div id="paragraaf1-2" class="subsectie">
+                    <h3>Paragraaf 1.2</h3>
+                    <p>Dit is de inhoud van de tweede paragraaf onder hoofdstuk 1.</p>
+                </div>
             </section>
 
+            <!-- Hoofdstuk 2 -->
             <section id="hoofdstuk2" class="sectie">
                 <h2>Hoofdstuk 2</h2>
-                <p>Dit is de tekst van hoofdstuk 2. De inhoudsopgave links scrolt in het begin gezellig mee, maar blijft daarna ook stilstaan onder de hoofdtitel.</p>
+                <p>Dit is de hoofdtekst van hoofdstuk 2.</p>
+
+                <!-- Paragraaf 2.1 -->
+                <div id="paragraaf2-1" class="subsectie">
+                    <h3>Paragraaf 2.1</h3>
+                    <p>Dit is de inhoud van de paragraaf die onder hoofdstuk 2 valt.</p>
+                </div>
             </section>
 
+            <!-- Hoofdstuk 3 -->
             <section id="hoofdstuk3" class="sectie">
                 <h2>Hoofdstuk 3</h2>
-                <p>Dit is de tekst van het laatste hoofdstuk. Alles werkt nu onafhankelijk van elkaar tijdens het scrollen.</p>
+                <p>Dit is de tekst van het laatste hoofdstuk, zonder extra sub-paragrafen.</p>
             </section>
         </main>
 
