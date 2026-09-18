@@ -3,7 +3,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0 20px 20px 20px;
-    /* Zorgt ervoor dat het scrollen vloeiend verloopt in plaats van een harde sprong */
     scroll-behavior: smooth; 
 }
 
@@ -46,11 +45,12 @@ body {
     margin-bottom: 12px;
 }
 
-/* Zorgt dat paragraaf-links in de inhoudsopgave netjes inspringen */
+/* AANPASSING: Duidelijker inspringen en kleinere lettergrootte voor paragrafen */
 .inhoudsopgave .sublink {
-    padding-left: 15px;
-    font-size: 0.9em;
-    margin-bottom: 8px;
+    padding-left: 20px;       /* Schuift de link verder naar rechts (inspringen) */
+    font-size: 0.85em;        /* Maakt de letters een stukje kleiner dan de hoofdstukken */
+    margin-top: -4px;         /* Zet de sublink iets dichter onder het hoofdhoofdstuk */
+    margin-bottom: 8px;       /* Ruimte onder de sublink */
 }
 
 /* Rechterkolom (Hoofdtekst) */
@@ -58,16 +58,16 @@ body {
     flex: 1;
 }
 
-/* HOOFDAANPASSING: Zorgt dat de hoofdstukken niet achter de bovenbalk verdwijnen */
+/* Zorgt dat de hoofdstukken niet achter de bovenbalk verdwijnen */
 .sectie {
     margin-bottom: 400px;
-    scroll-margin-top: 100px; /* Houdt 100px ruimte vrij aan de bovenkant bij het springen */
+    scroll-margin-top: 100px; 
 }
 
-/* HOOFDAANPASSING: Zorgt dat ook de paragrafen mooi in beeld springen */
+/* Zorgt dat ook de paragrafen mooi in beeld springen */
 .subsectie {
     margin-top: 24px;
     padding-left: 10px;
     border-left: 2px solid #eee;
-    scroll-margin-top: 110px; /* Net iets meer ruimte voor de subkopjes */
+    scroll-margin-top: 110px; 
 }
