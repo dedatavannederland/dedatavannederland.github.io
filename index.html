@@ -157,55 +157,55 @@
 
     </div>
 
-    <script>
-        // 1. Eerst de hoofdhoofdstukken logica (in/uitklappen van alle sublinks)
+   <script>
+        // 1. Logica voor de hoofdhoofdstukken (Inleiding, Domeinen, Hoofdstuk 3)
         document.querySelectorAll('.inhoudsopgave > li:not(.sublink):not(.subsublink) > a').forEach(hoofdLink => {
             hoofdLink.addEventListener('click', function(e) {
                 const ouderLi = this.parentElement;
                 let volgendeElement = ouderLi.nextElementSibling;
                 
-                // Sluit eerst alle subsublinks en haal pijltjes-statussen weg
+                // Sluit eerst alle subsublinks en haal actieve pijltjes weg
                 document.querySelectorAll('.subsublink').forEach(el => el.classList.remove('toon'));
                 document.querySelectorAll('.sublink').forEach(el => el.classList.remove('open'));
 
-                // Controleer of de sublinks al open stonden
+                // Controleer of de sublinks momenteel al open staan
                 let zijnAlOpen = volgendeElement && volgendeElement.style.display === 'list-item';
 
-                // Sluit of open alle sublinks van dit hoofdstuk
+                // Open of verberg de sublinks van dit hoofdstuk
                 let checkElement = ouderLi.nextElementSibling;
                 while (checkElement && (checkElement.classList.contains('sublink') || checkElement.classList.contains('subsublink'))) {
                     if (checkElement.classList.contains('sublink')) {
-                        checkElement.style.display = zijnAlOpen ? 'none' : 'list-item';
+                        checkElement.style.style.display = zijnAlOpen ? 'none' : 'list-item';
                     } else {
-                        checkElement.style.display = 'none'; // Subsublinks altijd gesloten houden bij hoofdwissel
+                        checkElement.style.display = 'none'; // Subsublinks blijven dicht bij hoofdwissel
                     }
                     checkElement = checkElement.nextElementSibling;
                 }
             });
         });
 
-        // 2. Logica voor de subsublinks (Niveau 2.1.1)
-        document.querySelectorAll('.inhoudsopgave .sublink').forEach(sublink => {
+        // 2. Logica voor de sublinks (Zorgt dat ALLEEN niveau 2.1 een pijltje krijgt voor 2.1.1, 2.1.2 etc.)
+        document.querySelectorAll('.inhoudsopgave > li.sublink').forEach(sublink => {
             const volgende = sublink.nextElementSibling;
             
-            // Als het volgende element een subsublink is, geef deze sublink een icoontje
+            // Controleer STRIKT of het volgende element een subsublink is
             if (volgende && volgende.classList.contains('subsublink')) {
                 sublink.classList.add('heeft-sub');
                 
-                // Luister naar een klik op deze specifieke sublink
+                // Luister naar de klik op de sublink-link
                 sublink.querySelector('a').addEventListener('click', function(e) {
-                    e.preventDefault(); // Voorkomt direct springen als je alleen wilt uitklappen
+                    e.preventDefault(); // Voorkom direct springen
                     
                     sublink.classList.toggle('open');
                     
-                    // Klap alle opeenvolgende subsublinks open of dicht
+                    // Klap álle opeenvolgende subsublinks open of dicht die bij deze sublink horen
                     let subsub = sublink.nextElementSibling;
                     while (subsub && subsub.classList.contains('subsublink')) {
                         subsub.classList.toggle('toon');
                         subsub = subsub.nextElementSibling;
                     }
                     
-                    // Handmatig naar het anker springen na het uitklappen
+                    // Nette smooth scroll naar het juiste hoofdstuk
                     const doelId = this.getAttribute('href');
                     document.querySelector(doelId).scrollIntoView({ behavior: 'smooth' });
                 });
