@@ -197,16 +197,16 @@
             });
         });
 
-        // 2. Logica voor de sublinks: Alleen actie als het een ECHTE .sublink is (en GEEN .subsublink)
+        // 2. Logica voor de sublinks (Zorgt dat 2.1 uitklapbaar is voor 2.1.1, 2.1.2 etc.)
         document.querySelectorAll('.inhoudsopgave > li.sublink').forEach(sublink => {
             const volgende = sublink.nextElementSibling;
             
             // Controleer of er daadwerkelijk een subsublink achteraan komt
-            if (volgende && voldoende.classList.contains('subsublink')) {
+            if (volgende && volgende.classList.contains('subsublink')) {
                 sublink.classList.add('heeft-sub');
                 
                 sublink.querySelector('a').addEventListener('click', function(e) {
-                    e.preventDefault(); // Voorkom dat de pagina direct naar de link springt
+                    e.preventDefault(); // Voorkom dat de pagina direct naar de link springt voordat het menu open is
                     
                     // Toggle het pijltje (open/dicht)
                     sublink.classList.toggle('open');
@@ -225,14 +225,14 @@
             }
         });
 
-        // 3. VEILIGHEID: Blokkeer dat de links van subsublinks (bijv. 2.1.1) het menu kunnen inklappen/beïnvloeden
+        // 3. VEILIGHEID: Zorgt dat klikken op 2.1.1 gewoon scrolt en niks met het menu doet
         document.querySelectorAll('.inhoudsopgave > li.subsublink > a').forEach(subsubLink => {
             subsubLink.addEventListener('click', function(e) {
-                // Laat de browser gewoon zijn werk doen (smooth scrollen), maar voer verder GEEN menu-scripts uit
                 e.stopPropagation(); 
             });
         });
     </script>
+    
 </body>
 
     
