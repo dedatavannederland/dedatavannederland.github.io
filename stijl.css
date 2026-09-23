@@ -1,9 +1,14 @@
 /* Basisstijl voor de pagina */
+html {
+    scroll-behavior: smooth; /* AANPASSING: Verplaatst van body naar html zodat smooth scroll wél overal werkt */
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0 20px 20px 20px;
-    scroll-behavior: smooth; 
+    background-color: #fcfcfc; /* Subtiele achtergrondkleur */
+    color: #333;
 }
 
 /* Zorgt dat de titel bovenaan blijft plakken bij het scrollen */
@@ -15,10 +20,17 @@ body {
     padding-bottom: 10px;
     z-index: 100;
     margin-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Optioneel: een strak lijntje onder je header */
 }
 
 .bovenbalk h1 {
     margin: 0 0 10px 0;
+    color: #111;
+}
+
+.bovenbalk h3 {
+    font-weight: normal;
+    color: #666;
 }
 
 /* De container die de kolommen daaronder opsplitst */
@@ -32,7 +44,13 @@ body {
 .zijbalk {
     flex: 0 0 200px;
     position: sticky; 
-    top: 90px;
+    top: 140px; /* AANPASSING: Iets verhoogd zodat hij niet strak tegen de sticky bovenbalk plakt */
+}
+
+.zijbalk h2 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #222;
 }
 
 .inhoudsopgave {
@@ -45,7 +63,18 @@ body {
     margin-bottom: 12px;
 }
 
-/* AANPASSING: Duidelijker inspringen en kleinere lettergrootte voor paragrafen */
+/* Styling voor de links in het menu */
+.inhoudsopgave a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+.inhoudsopgave a:hover {
+    text-decoration: underline;
+    color: #004499;
+}
+
+/* Duidelijker inspringen en kleinere lettergrootte voor paragrafen */
 .inhoudsopgave .sublink {
     padding-left: 20px;       /* Schuift de link verder naar rechts (inspringen) */
     font-size: 0.85em;        /* Maakt de letters een stukje kleiner dan de hoofdstukken */
@@ -56,18 +85,27 @@ body {
 /* Rechterkolom (Hoofdtekst) */
 .inhoud {
     flex: 1;
+    max-width: 800px; /* Tip: Voorkomt dat tekstregels op brede schermen te lang en onleesbaar worden */
 }
 
 /* Zorgt dat de hoofdstukken niet achter de bovenbalk verdwijnen */
 .sectie {
-    margin-bottom: 400px;
-    scroll-margin-top: 200px; 
+    margin-bottom: 60px; /* AANPASSING: Teruggebracht naar een normale, nette afstand (was 400px) */
+    scroll-margin-top: 140px; /* AANPASSING: Afgestemd op de hoogte van de bovenbalk */
 }
 
 /* Zorgt dat ook de paragrafen mooi in beeld springen */
 .subsectie {
     margin-top: 24px;
-    padding-left: 10px;
-    border-left: 2px solid #eee;
-    scroll-margin-top: 210px; 
+    padding-left: 15px;
+    border-left: 3px solid #0066cc; /* Tip: Geef het een kleurtje voor een modernere look */
+    scroll-margin-top: 140px; /* AANPASSING: Afgestemd op de hoogte van de bovenbalk */
+}
+
+/* TIP: Voeg een 'ghost' padding toe onderaan de inhoud, zodat je ALTIJD naar het laatste element kunt scrollen 
+   zonder dat er een lelijke lege witte ruimte ontstaat op de pagina zelf. */
+.inhoud::after {
+    content: "";
+    display: block;
+    height: 50vh; 
 }
