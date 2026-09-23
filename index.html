@@ -82,7 +82,7 @@
                         <p>Hier komt de specifieke data en diepere informatie over de spelers in het domein.</p>
                     </div>
                     
-                </div> <!-- AANPASSING: Paragraaf 2.1 wordt hier nu correct afgesloten! -->
+                </div>
 
                 <!-- Paragraaf 2.2 -->
                 <div id="2-2financien" class="subsectie">
@@ -131,7 +131,7 @@
             });
         });
 
-        // 2. Logica voor de sublinks (Zorgt dat 2.1 uitklapbaar is voor 2.1.1)
+        // 2. VERBETERDE LOGICA: Zorgt dat 2.1 uitklapbaar is én alle onderliggende subsublinks correct meeneemt
         document.querySelectorAll('.inhoudsopgave > li.sublink').forEach(sublink => {
             const volgende = sublink.nextElementSibling;
             
@@ -140,11 +140,14 @@
                 
                 sublink.querySelector('a').addEventListener('click', function(e) {
                     e.preventDefault();
-                    sublink.classList.toggle('open');
+                    
+                    // Bepaal of we gaan openen of sluiten op basis van de huidige status
+                    const gaatOpenen = !sublink.classList.contains('open');
+                    sublink.classList.toggle('open', gaatOpenen);
                     
                     let subsub = sublink.nextElementSibling;
                     while (subsub && subsub.classList.contains('subsublink')) {
-                        subsub.classList.toggle('toon');
+                        subsub.classList.toggle('toon', gaatOpenen);
                         subsub = subsub.nextElementSibling;
                     }
                     
@@ -154,7 +157,7 @@
             }
         });
 
-        // 3. VEILIGHEID: Blokkeer uitklapgedrag voor subsublinks (zoals 2.1.1) volledig
+        // 3. VEILIGHEID: Blokkeer uitklapgedrag voor subsublinks volledig
         document.querySelectorAll('.inhoudsopgave > li.subsublink > a').forEach(subsubLink => {
             subsubLink.addEventListener('click', function(e) {
                 e.stopPropagation();
