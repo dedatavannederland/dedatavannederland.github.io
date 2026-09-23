@@ -170,7 +170,7 @@
 
     </div>
 
-   <script>
+  <script>
         // 1. Logica voor de hoofdhoofdstukken (Inleiding, Domeinen, Hoofdstuk 3)
         document.querySelectorAll('.inhoudsopgave > li:not(.sublink):not(.subsublink) > a').forEach(hoofdLink => {
             hoofdLink.addEventListener('click', function(e) {
@@ -188,7 +188,7 @@
                 let checkElement = ouderLi.nextElementSibling;
                 while (checkElement && (checkElement.classList.contains('sublink') || checkElement.classList.contains('subsublink'))) {
                     if (checkElement.classList.contains('sublink')) {
-                        checkElement.style.style.display = zijnAlOpen ? 'none' : 'list-item';
+                        checkElement.style.display = zijnAlOpen ? 'none' : 'list-item';
                     } else {
                         checkElement.style.display = 'none'; // Subsublinks blijven dicht bij hoofdwissel
                     }
@@ -197,32 +197,40 @@
             });
         });
 
-        // 2. Logica voor de sublinks (Zorgt dat ALLEEN niveau 2.1 een pijltje krijgt voor 2.1.1, 2.1.2 etc.)
+        // 2. Logica voor de sublinks: Alleen actie als het een ECHTE .sublink is (en GEEN .subsublink)
         document.querySelectorAll('.inhoudsopgave > li.sublink').forEach(sublink => {
             const volgende = sublink.nextElementSibling;
             
-            // Controleer STRIKT of het volgende element een subsublink is
-            if (volgende && volgende.classList.contains('subsublink')) {
+            // Controleer of er daadwerkelijk een subsublink achteraan komt
+            if (volgende && voldoende.classList.contains('subsublink')) {
                 sublink.classList.add('heeft-sub');
                 
-                // Luister naar de klik op de sublink-link
                 sublink.querySelector('a').addEventListener('click', function(e) {
-                    e.preventDefault(); // Voorkom direct springen
+                    e.preventDefault(); // Voorkom dat de pagina direct naar de link springt
                     
+                    // Toggle het pijltje (open/dicht)
                     sublink.classList.toggle('open');
                     
-                    // Klap álle opeenvolgende subsublinks open of dicht die bij deze sublink horen
+                    // Klap álle opeenvolgende subsublinks open of dicht die bij deze specifieke sublink horen
                     let subsub = sublink.nextElementSibling;
                     while (subsub && subsub.classList.contains('subsublink')) {
                         subsub.classList.toggle('toon');
                         subsub = subsub.nextElementSibling;
                     }
                     
-                    // Nette smooth scroll naar het juiste hoofdstuk
+                    // Nette smooth scroll naar het juiste hoofdstuk na het uitklappen
                     const doelId = this.getAttribute('href');
                     document.querySelector(doelId).scrollIntoView({ behavior: 'smooth' });
                 });
             }
+        });
+
+        // 3. VEILIGHEID: Blokkeer dat de links van subsublinks (bijv. 2.1.1) het menu kunnen inklappen/beïnvloeden
+        document.querySelectorAll('.inhoudsopgave > li.subsublink > a').forEach(subsubLink => {
+            subsubLink.addEventListener('click', function(e) {
+                // Laat de browser gewoon zijn werk doen (smooth scrollen), maar voer verder GEEN menu-scripts uit
+                e.stopPropagation(); 
+            });
         });
     </script>
 </body>
