@@ -206,7 +206,7 @@
                 sublink.classList.add('heeft-sub');
                 
                 sublink.querySelector('a').addEventListener('click', function(e) {
-                    e.preventDefault(); // Voorkom dat de pagina direct naar de link springt voordat het menu open is
+                    e.preventDefault(); // Voorkom direct springen
                     
                     // Toggle het pijltje (open/dicht)
                     sublink.classList.toggle('open');
@@ -225,10 +225,18 @@
             }
         });
 
-        // 3. VEILIGHEID: Zorgt dat klikken op 2.1.1 gewoon scrolt en niks met het menu doet
+        // 3. DEFINITIEVE FIX: Blokkeer uitklapgedrag voor subsublinks (zoals 2.1.1) volledig
         document.querySelectorAll('.inhoudsopgave > li.subsublink > a').forEach(subsubLink => {
             subsubLink.addEventListener('click', function(e) {
-                e.stopPropagation(); 
+                // We stoppen alle acties die het menu kunnen beïnvloeden
+                e.stopPropagation();
+                
+                // We laten de browser WEL gewoon smooth scrollen naar de juiste sectie
+                const doelId = this.getAttribute('href');
+                if (doelId) {
+                    e.preventDefault();
+                    document.querySelector(doelId).scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
     </script>
