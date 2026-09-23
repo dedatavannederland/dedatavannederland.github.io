@@ -98,5 +98,63 @@
 
     </div>
 
+    <script>
+        // 1. Eerst de hoofdhoofdstukken logica (in/uitklappen van alle sublinks)
+        document.querySelectorAll('.inhoudsopgave > li:not(.sublink):not(.subsublink) > a').forEach(hoofdLink => {
+            hoofdLink.addEventListener('click', function(e) {
+                const ouderLi = this.parentElement;
+                let volgendeElement = ouderLi.nextElementSibling;
+                
+                // Sluit eerst alle subsublinks en haal pijltjes-statussen weg
+                document.querySelectorAll('.subsublink').forEach(el => el.classList.remove('toon'));
+                document.querySelectorAll('.sublink').forEach(el => el.classList.remove('open'));
+
+                // Controleer of de sublinks al open stonden
+                let zijnAlOpen = volgendeElement && volgendeElement.style.display === 'list-item';
+
+                // Sluit of open alle sublinks van dit hoofdstuk
+                let checkElement = ouderLi.nextElementSibling;
+                while (checkElement && (checkElement.classList.contains('sublink') || checkElement.classList.contains('subsublink'))) {
+                    if (checkElement.classList.contains('sublink')) {
+                        checkElement.style.display = zijnAlOpen ? 'none' : 'list-item';
+                    } else {
+                        checkElement.style.display = 'none'; // Subsublinks altijd gesloten houden bij hoofdwissel
+                    }
+                    checkElement = checkElement.nextElementSibling;
+                }
+            });
+        });
+
+        // 2. Logica voor de subsublinks (Niveau 2.1.1)
+        document.querySelectorAll('.inhoudsopgave .sublink').forEach(sublink => {
+            const volgende = sublink.nextElementSibling;
+            
+            // Als het volgende element een subsublink is, geef deze sublink een icoontje
+            if (volgende && volgende.classList.contains('subsublink')) {
+                sublink.classList.add('heeft-sub');
+                
+                // Luister naar een klik op deze specifieke sublink
+                sublink.querySelector('a').addEventListener('click', function(e) {
+                    e.preventDefault(); // Voorkomt direct springen als je alleen wilt uitklappen
+                    
+                    sublink.classList.toggle('open');
+                    
+                    // Klap alle opeenvolgende subsublinks open of dicht
+                    let subsub = sublink.nextElementSibling;
+                    while (subsub && subsub.classList.contains('subsublink')) {
+                        subsub.classList.toggle('toon');
+                        subsub = subsub.nextElementSibling;
+                    }
+                    
+                    // Handmatig naar het anker springen na het uitklappen
+                    const doelId = this.getAttribute('href');
+                    document.querySelector(doelId).scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+
+    
 </body>
 </html>
