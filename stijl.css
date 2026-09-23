@@ -109,3 +109,28 @@ body {
     display: block;
     height: 50vh; 
 }
+/* ==========================================================================
+   Extra subniveau (Niveau 3: bijv. 2.1.1)
+   ========================================================================== */
+
+/* Extra inspringen in de zijbalk */
+.inhoudsopgave .subsublink {
+    padding-left: 35px;       /* Schuift nog verder naar rechts dan de gewone sublink */
+    font-size: 0.8em;         /* Iets kleiner lettertype voor het diepste niveau */
+    margin-top: -6px;
+}
+
+/* Styling voor de diepere paragraaf in de hoofdtekst */
+.subsubsectie {
+    margin-top: 20px;
+    padding-left: 15px;
+    border-left: 2px dashed #0066cc; /* Subtiel gestreept lijntje in plaats van doorgetrokken */
+    scroll-margin-top: 140px;        /* Zorgt dat ook dit niveau niet achter de bovenbalk verdwijnt */
+}
+
+.subsubsectie h4 {
+    color: #555;                     /* Iets neutralere kleur voor de h4-titel */
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
