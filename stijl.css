@@ -1,6 +1,6 @@
 /* Basisstijl voor de pagina */
 html {
-    scroll-behavior: smooth; /* AANPASSING: Verplaatst van body naar html zodat smooth scroll wél overal werkt */
+    scroll-behavior: smooth; /* Smooth scroll werkt nu overal */
 }
 
 body {
@@ -20,7 +20,7 @@ body {
     padding-bottom: 10px;
     z-index: 100;
     margin-bottom: 20px;
-    border-bottom: 1px solid #eee; /* Optioneel: een strak lijntje onder je header */
+    border-bottom: 1px solid #eee; /* Strak lijntje onder je header */
 }
 
 .bovenbalk h1 {
@@ -28,9 +28,11 @@ body {
     color: #111;
 }
 
-.bovenbalk h3 {
+/* AANPASSING: Aangepast van h3 naar p, passend bij je nieuwe HTML */
+.bovenbalk p {
     font-weight: normal;
     color: #666;
+    margin: 0;
 }
 
 /* De container die de kolommen daaronder opsplitst */
@@ -44,7 +46,7 @@ body {
 .zijbalk {
     flex: 0 0 200px;
     position: sticky; 
-    top: 140px; /* AANPASSING: Iets verhoogd zodat hij niet strak tegen de sticky bovenbalk plakt */
+    top: 140px; /* Comfortabele afstand onder de sticky bovenbalk */
 }
 
 .zijbalk h2 {
@@ -74,73 +76,59 @@ body {
     color: #004499;
 }
 
-/* Duidelijker inspringen en kleinere lettergrootte voor paragrafen */
+/* Duidelijker inspringen en kleinere lettergrootte voor paragrafen (Niveau 2: 1.1, 2.1, etc.) */
 .inhoudsopgave .sublink {
-    padding-left: 20px;       /* Schuift de link verder naar rechts (inspringen) */
-    font-size: 0.85em;        /* Maakt de letters een stukje kleiner dan de hoofdstukken */
-    margin-top: -4px;         /* Zet de sublink iets dichter onder het hoofdhoofdstuk */
-    margin-bottom: 8px;       /* Ruimte onder de sublink */
-    position: relative;
+    padding-left: 20px;       /* Schuift de link verder naar rechts */
+    font-size: 0.85em;        /* Maakt de letters een stukje kleiner */
+    margin-top: -4px;         
+    margin-bottom: 8px;       
+}
+
+/* Extra subniveau (Niveau 3: bijv. 2.1.1 en 2.1.2) */
+.inhoudsopgave .subsublink {
+    padding-left: 35px;       /* Schuift nog verder naar rechts */
+    font-size: 0.8em;         /* Iets kleiner lettertype */
+    margin-top: -6px;
+    margin-bottom: 8px;
 }
 
 /* Rechterkolom (Hoofdtekst) */
 .inhoud {
     flex: 1;
-    max-width: 800px; /* Tip: Voorkomt dat tekstregels op brede schermen te lang en onleesbaar worden */
+    max-width: 800px; /* Voorkomt te brede, onleesbare tekstregels */
 }
 
 /* Zorgt dat de hoofdstukken niet achter de bovenbalk verdwijnen */
 .sectie {
-    margin-bottom: 60px; /* AANPASSING: Teruggebracht naar een normale, nette afstand (was 400px) */
-    scroll-margin-top: 140px; /* AANPASSING: Afgestemd op de hoogte van de bovenbalk */
+    margin-bottom: 60px; 
+    scroll-margin-top: 140px; 
 }
 
 /* Zorgt dat ook de paragrafen mooi in beeld springen */
 .subsectie {
     margin-top: 24px;
     padding-left: 15px;
-    border-left: 3px solid #0066cc; /* Tip: Geef het een kleurtje voor een modernere look */
-    scroll-margin-top: 140px; /* AANPASSING: Afgestemd op de hoogte van de bovenbalk */
-}
-
-/* TIP: Voeg een 'ghost' padding toe onderaan de inhoud, zodat je ALTIJD naar het laatste element kunt scrollen 
-   zonder dat er een lelijke lege witte ruimte ontstaat op de pagina zelf. */
-.inhoud::after {
-    content: "";
-    display: block;
-    height: 50vh; 
-}
-/* ==========================================================================
-   Extra subniveau (Niveau 3: bijv. 2.1.1)
-   ========================================================================== */
-
-/* Duidelijker inspringen en kleinere lettergrootte voor paragrafen */
-.inhoudsopgave .sublink {
-    padding-left: 20px;       /* Schuift de link verder naar rechts (inspringen) */
-    font-size: 0.85em;        /* Maakt de letters een stukje kleiner dan de hoofdstukken */
-    margin-top: -4px;         /* Zet de sublink iets dichter onder het hoofdhoofdstuk */
-    margin-bottom: 8px;       /* Ruimte onder de sublink */
-}
-
-/* Extra subniveau (Niveau 3: bijv. 2.1.1 en 2.1.2) */
-.inhoudsopgave .subsublink {
-    padding-left: 35px;       /* Schuift nog verder naar rechts dan de gewone sublink */
-    font-size: 0.8em;         /* Iets kleiner lettertype voor het diepste niveau */
-    margin-top: -6px;
-    margin-bottom: 8px;
+    border-left: 3px solid #0066cc; /* Blauwe lijn voor modernere look */
+    scroll-margin-top: 140px; 
 }
 
 /* Styling voor de diepere paragraaf in de hoofdtekst */
 .subsubsectie {
     margin-top: 20px;
     padding-left: 15px;
-    border-left: 2px dashed #0066cc; /* Subtiel gestreept lijntje in plaats van doorgetrokken */
-    scroll-margin-top: 140px;        /* Zorgt dat ook dit niveau niet achter de bovenbalk verdwijnt */
+    border-left: 2px dashed #0066cc; /* Subtiel gestreept lijntje */
+    scroll-margin-top: 140px;        
 }
 
 .subsubsectie h4 {
-    color: #555;                     /* Iets neutralere kleur voor de h4-titel */
+    color: #555;                     
     font-size: 1em;
     margin-bottom: 5px;
 }
 
+/* Ghost padding onderaan de pagina om altijd naar het laatste element te kunnen scrollen */
+.inhoud::after {
+    content: "";
+    display: block;
+    height: 50vh; 
+}
