@@ -114,33 +114,20 @@ body {
    Extra subniveau (Niveau 3: bijv. 2.1.1)
    ========================================================================== */
 
-/* Extra inspringen in de zijbalk */
+/* Duidelijker inspringen en kleinere lettergrootte voor paragrafen */
+.inhoudsopgave .sublink {
+    padding-left: 20px;       /* Schuift de link verder naar rechts (inspringen) */
+    font-size: 0.85em;        /* Maakt de letters een stukje kleiner dan de hoofdstukken */
+    margin-top: -4px;         /* Zet de sublink iets dichter onder het hoofdhoofdstuk */
+    margin-bottom: 8px;       /* Ruimte onder de sublink */
+}
+
+/* Extra subniveau (Niveau 3: bijv. 2.1.1 en 2.1.2) */
 .inhoudsopgave .subsublink {
-    display: none;             /* Alleen het diepste niveau (2.1.1) staat nu standaard dicht */
     padding-left: 35px;       /* Schuift nog verder naar rechts dan de gewone sublink */
     font-size: 0.8em;         /* Iets kleiner lettertype voor het diepste niveau */
     margin-top: -6px;
-}
-
-/* Zorgt ervoor dat de subsublink getoond wordt als hij de class 'toon' krijgt */
-.inhoudsopgave .subsublink.toon {
-    display: list-item;
-}
-
-/* --- ICOONTJE VOOR UITKLAPBARE SUBLINKS --- */
-
-/* Plaats een dicht pijltje voor een sublink die een subsublink heeft */
-.inhoudsopgave .sublink.heeft-sub::before {
-    content: "▸ ";
-    position: absolute;
-    left: 8px; /* Plakt het pijltje netjes voor de tekst */
-    color: #0066cc;
-    transition: transform 0.2s;
-}
-
-/* Verander het pijltje in een open pijltje als het menu is uitgeklapt */
-.inhoudsopgave .sublink.heeft-sub.open::before {
-    content: "▾ ";
+    margin-bottom: 8px;
 }
 
 /* Styling voor de diepere paragraaf in de hoofdtekst */
